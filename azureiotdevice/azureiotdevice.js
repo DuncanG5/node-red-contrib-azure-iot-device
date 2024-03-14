@@ -100,7 +100,7 @@ module.exports = function (RED) {
     // Send catchable error to node-red
     var error = function (node, payload, message) {
         var msg = {};
-        msg.topic = 'Error';
+        msg.topic = 'error';
         msg.message = message;
         msg.payload = payload;
         node.error(msg);
@@ -486,6 +486,7 @@ module.exports = function (RED) {
                 } else {
                     error(node, message, node.deviceid + ' -> Unable to send telemetry, device not connected.');
                     setStatus(node, statusEnum.error);
+                    initiateDevice(node);
                 }   
             }            
         } else {
@@ -567,6 +568,7 @@ module.exports = function (RED) {
         }
         return true;
     };
+
 
     // Registration of the node into Node-RED
     RED.nodes.registerType("azureiotdevice", AzureIoTDevice, {
