@@ -486,7 +486,7 @@ module.exports = function (RED) {
                 } else {
                     error(node, message, node.deviceid + ' -> Unable to send telemetry, device not connected.');
                     setStatus(node, statusEnum.error);
-                    initiateDevice(node);
+                    connectDevice(node);
                 }   
             }            
         } else {
