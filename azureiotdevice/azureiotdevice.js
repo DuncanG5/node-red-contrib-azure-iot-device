@@ -495,7 +495,7 @@ module.exports = function (RED) {
                                 // Get the twin, throw error if it fails
                                 if (result === null) {
                                     retrieveTwin(node).then( result => {
-                                    node.log(node.deviceid + ' -> Device twin retrieved.');
+                                        node.log(node.deviceid + ' -> Device twin retrieved.');
                                     }).catch( function (err) {
                                         error(node, err, node.deviceid + ' -> Retrieving device twin failed');
                                         throw new Error(err);
@@ -511,11 +511,11 @@ module.exports = function (RED) {
                         }
                     }).catch( function(err) {
                         error(node, err, node.deviceid + ' -> Device provisioning failed.');
-                    });            
-        } else {
-            error(node, message, node.deviceid + ' -> Invalid telemetry format.');
-        }
-    };
+                    });         
+            } else {
+                error(node, message, node.deviceid + ' -> Invalid telemetry format.');
+            }
+        };
 
     
     // Send device reported properties.
