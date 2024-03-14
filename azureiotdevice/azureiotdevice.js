@@ -100,7 +100,7 @@ module.exports = function (RED) {
     // Send catchable error to node-red
     var error = function (node, payload, message) {
         var msg = {};
-        msg.topic = 'error';
+        msg.topic = 'Error';
         msg.message = message;
         msg.payload = payload;
         node.error(msg);
