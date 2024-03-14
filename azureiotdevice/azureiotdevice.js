@@ -584,7 +584,7 @@ module.exports = function (RED) {
             keyname: {value: ""},
             passphrase: {value:""},
             protocol: {value: ""},
-            retryInterval: {value: 10},
+            retryInterval: {value: 120},
             methods: {value: []},
             DPSpayload: {value: ""},
             isDownstream: {value: false},
