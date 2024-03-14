@@ -292,7 +292,7 @@ module.exports = function (RED) {
                         });
                     }
                 } else {
-                    resolve(options);
+                    reject("Provisionning lost");//resolve(options);
                 }
             } catch (err) {
                 reject("Failed to provision device: " + err);
