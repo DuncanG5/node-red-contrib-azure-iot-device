@@ -486,32 +486,8 @@ module.exports = function (RED) {
                 } else {
                     error(node, message, node.deviceid + ' -> Unable to send telemetry, device not connected.');
                     setStatus(node, statusEnum.error);
-                    node.retries = 0;
-                    provisionDevice(node).then( result => {
-                        if (result) {
-                            // Connect device to Azure IoT
-                            node.retries = 0;
-                            connectDevice(node, result).then( result => {
-                                // Get the twin, throw error if it fails
-                                if (result === null) {
-                                    retrieveTwin(node).then( result => {
-                                        node.log(node.deviceid + ' -> Device twin retrieved.');
-                                    }).catch( function (err) {
-                                        error(node, err, node.deviceid + ' -> Retrieving device twin failed');
-                                        throw new Error(err);
-                                    });
-                                } else {
-                                    throw new Error(result);
-                                }
-                            }).catch( function(err) {
-                                error(node, err, node.deviceid + ' -> Device connection failed');
-                            });
-                        } else {
-                            throw new Error(result);
-                        }
-                    }).catch( function(err) {
-                        error(node, err, node.deviceid + ' -> Device provisioning failed.');
-                    });         
+                    initiateDevice(node);
+                }
             } else {
                 error(node, message, node.deviceid + ' -> Invalid telemetry format.');
             }
