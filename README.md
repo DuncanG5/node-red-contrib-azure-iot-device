@@ -21,3 +21,7 @@ In the [use](https://github.com/iotblackbelt/node-red-contrib-azure-iot-device/b
 
 ## Resilience
 The node is developed to resist network loss. If there is no connectivity, the node will try to re-establish a device connection based on the set retry interval. The node doesn't store and forward. All message and properties sent during a loss of connectivity, will be lost.
+
+## Fork reson 
+Increase the retry time to allow for longer "down" time.
+Once done will look to make an input command to retry the connection as redeploying is not working for our solution.
