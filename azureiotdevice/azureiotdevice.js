@@ -202,6 +202,7 @@ module.exports = function (RED) {
             }
         }).catch( function(err) {
             error(node, err, node.deviceid + ' -> Device provisioning failed.');
+            closeAll(node);
         });
     };
 
