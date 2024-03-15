@@ -153,7 +153,7 @@ module.exports = function (RED) {
     function initiateDevice(node) {
         
         // Ensure resources are reset
-        node.on('close', function(done) {
+        node.on('close', function(node) {
             closeAll(node);
             done();
         });
@@ -484,8 +484,6 @@ module.exports = function (RED) {
                         }
                     });      
                 } else {
-                    initiateDevice(node);
-                    node.log(node.deviceid + ' -> We got here.');
                     error(node, message, node.deviceid + ' -> Unable to send telemetry, device not connected.');
                     setStatus(node, statusEnum.error);
                 }
@@ -587,7 +585,7 @@ module.exports = function (RED) {
             keyname: {value: ""},
             passphrase: {value:""},
             protocol: {value: ""},
-            retryInterval: {value: 120},
+            retryInterval: {value: 10},
             methods: {value: []},
             DPSpayload: {value: ""},
             isDownstream: {value: false},
