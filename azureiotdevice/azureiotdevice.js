@@ -489,8 +489,9 @@ module.exports = function (RED) {
                     error(node, message, node.deviceid + ' -> Unable to send telemetry, device not connected.');
                     setStatus(node, statusEnum.error);
                 }
-            } else {
-                error(node, message, node.deviceid + ' -> Invalid telemetry format.');
+            }
+        } else {
+                    error(node, message, node.deviceid + ' -> Invalid telemetry format.');
             }
         };
 
