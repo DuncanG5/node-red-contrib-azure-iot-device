@@ -484,10 +484,11 @@ module.exports = function (RED) {
                         }
                     });      
                 } else {
-                    error(node, message, node.deviceid + ' -> Unable to send telemetry, device not connected.');
-                    setStatus(node, statusEnum.error);
                     initiateDevice(node);
                     node.log(node, message, node.deviceid + ' -> We got here.');
+                    error(node, message, node.deviceid + ' -> Unable to send telemetry, device not connected.');
+                    setStatus(node, statusEnum.error);
+
                 }
             } else {
                 error(node, message, node.deviceid + ' -> Invalid telemetry format.');
